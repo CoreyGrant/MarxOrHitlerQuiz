@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="MarxOrHitler.css" rel="stylesheet"/>
+        <link href="MarxOrHitler.tablet.css" rel="stylesheet"/>
+        <link href="MarxOrHitler.mobile.css" rel="stylesheet"/>
     </head>
     <body>
         <header></header>
@@ -22,9 +26,10 @@
                     <li>The language has been left uncensored.</li>
                     <li>Some quotes are widely attributed, but the source is not specified. Where this is the case, I've sourced the quote to "Unknown".</li>
                 </ul>
-                <button type="button" id="quiz-start" class="btn btn-primary">Start quiz</button>
+                <button type="button" id="quiz-start" class="btn btn-primary" style="align-self: center;">Start quiz</button>
             </div>
             <div id="quiz-page">
+                <div id="quiz-quote-counter"></div>
                 <div id="quiz-images">
                     <div id="quiz-left-image">
                         <!-- MARX -->
@@ -37,10 +42,7 @@
                 </div>
                 <div id="quiz-quote">
                     <p id="quiz-quote-actual"></p>
-                    <div style="display: flex;">
-                        <p id="quiz-quote-author"></p>
-                        <p id="quiz-quote-attribution"></p>
-                    </div>
+                    <p id="quiz-quote-attribution"></p>
                     <p id="quiz-quote-right"><span class="material-icons">done</span></p>
                     <p id="quiz-quote-wrong"><span class="material-icons">close</span></p>
                 </div>
@@ -56,16 +58,13 @@
                 <div id="results-list">
                 </div>
                 <div id="results-options">
-                    <!--<button type="button" id="quiz-reset" class="btn btn-primary">Restart</button>-->
+                    <button type="button" id="quiz-reset" class="btn btn-primary">Restart</button>
                 </div>
                 <template id="result-template">
                     <div class="result-container">
                     <div class="result">
                         <p class="result-quote"></p>
-                        <div style="display: flex;">
-                            <p class="result-author"></p>
-                            <p class="result-attribution"></p>
-                        </div>
+                        <p class="result-attribution"></p>
                         <p class="result-right"><span class="material-icons">done</span></p>
                         <p class="result-wrong"><span class="material-icons">close</span></p>
                     </div>

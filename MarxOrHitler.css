@@ -2,7 +2,7 @@ html{
     font-family: 'Roboto', sans-serif;
 }
 
-button{
+.btn{
     height: 40px;
     width: 150px;
 }
@@ -25,6 +25,7 @@ body{
 
 #landing-page h1{
     font-size: 60px;
+    text-align: center;
 }
 
 #landing-page h3{
@@ -33,6 +34,10 @@ body{
 
 #landing-page p{
     font-size: 24px;
+}
+
+#landing-page ul{
+    font-size: 18px;
 }
 
 #landing-page, #quiz-page, #results-page{
@@ -49,7 +54,7 @@ body{
     display: none;
 }
 
-#quiz-quote-author, #quiz-quote-attribution, #quiz-quote-right, #quiz-quote-wrong{
+#quiz-quote-attribution, #quiz-quote-right, #quiz-quote-wrong{
     display: none;
 }
 
@@ -110,7 +115,7 @@ body{
 #quiz-quote{
     height: fit-content;
     text-align: center;
-    min-height: 250px;
+    min-height: 260px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -122,8 +127,15 @@ body{
     font-size: 22px;
 }
 
-#quiz-quote-author{ font-size: 20px; margin-right: 6px;}
-#quiz-quote-attribution{ font-style: italic; font-size: 20px;}
+#quiz-quote-counter{
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#quiz-quote-attribution{ font-size: 20px; }
+#quiz-quote-loc{ font-style: italic;}
 #quiz-options{
     display: flex;
     justify-content: center;
@@ -146,6 +158,7 @@ body{
 #results-summary{
     width: calc(100% - 12px);
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     padding: 20px;
     border: 3px solid black;
@@ -170,6 +183,8 @@ body{
 
 #results-options{
     padding: 6px;
+    display: flex;
+    justify-content: center;
 }
 
 .result-container{
@@ -199,16 +214,14 @@ body{
     font-size: 18px;
 }
 
-.result-author{
+.result-attribution{
     font-size: 18px;
-    margin-right: 6px;
     width: fit-content;
+    display: inline;
 }
 
-.result-attribution{
-    font-size: 16px;
+.result-loc{
     font-style: italic;
-    margin-top: 2px;
 }
 
 .result-right{
@@ -319,4 +332,3 @@ body{
     from{opacity: 0; z-index: -10;}
     to {opacity: 1; z-index: 0;}
 }
-

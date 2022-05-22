@@ -34,11 +34,12 @@
     const quizLeftImage = document.getElementById('quiz-left-image');
     const quizRightImage = document.getElementById('quiz-right-image');
 
+    const quizQuoteCounter = document.getElementById('quiz-quote-counter');
+
     const quizMarxImage = document.getElementById('quiz-marx-image');
     const quizHitlerImage = document.getElementById('quiz-hitler-image');
 
     const quoteActual = document.getElementById('quiz-quote-actual');
-    const quoteAuthor = document.getElementById('quiz-quote-author');
     const quoteAttribution = document.getElementById('quiz-quote-attribution');
     const quoteRight = document.getElementById('quiz-quote-right');
     const quoteWrong = document.getElementById('quiz-quote-wrong');
@@ -50,6 +51,8 @@
     const quizResetButton = document.getElementById('quiz-reset');
 
     function startQuiz(){
+        quizNextQuoteButton.disabled = true;
+        updateCounter();
         randomiseQuotes();
         hide(landingPage);
         show(quizPage);
@@ -80,9 +83,8 @@
     }
 
     function showAnswer(answeredQuote){
-        quoteAuthor.innerHTML = answeredQuote.author ? '- Karl Marx, ' : '- Adolf Hitler, ';
-        quoteAttribution.innerHTML = answeredQuote.attribution; 
-        show(quoteAuthor, quoteAttribution);
+        quoteAttribution.innerHTML = (answeredQuote.author ? '- Karl Marx, ' : '- Adolf Hitler, ') + '<span id="quiz-quote-loc">' + answeredQuote.attribution + '</span>'; 
+        showInline(quoteAttribution);
         if(answeredQuote.answer === answeredQuote.author){
             show(quoteRight);
             hide(quoteWrong);
@@ -102,7 +104,7 @@
     }
 
     function nextQuote(){
-        hide(quoteRight, quoteWrong, quoteAuthor, quoteAttribution);
+        hide(quoteRight, quoteWrong, quoteAttribution);
         if(quizLeftImage.classList.contains('left-move')){
             quizLeftImage.classList.add('left-reset');
             quizLeftImage.classList.remove('left-move');
@@ -121,6 +123,7 @@
         }
         currentQuoteIndex++;
         var quote = quotes[currentQuoteIndex];
+        updateCounter();
         quoteActual.innerHTML = "\"" + quote.quote + "\"";
         quizNextQuoteButton.disabled = true;
     }
@@ -150,13 +153,11 @@
             var answer = answers[i];
             var clone = resultTemplate.content.cloneNode(true);
             var quote = clone.querySelectorAll('.result-quote')[0];
-            var author = clone.querySelectorAll('.result-author')[0];
             var attribution = clone.querySelectorAll('.result-attribution')[0];
             var right = clone.querySelectorAll('.result-right')[0];
             var wrong = clone.querySelectorAll('.result-wrong')[0];
             quote.innerHTML = answer.quote;
-            author.innerHTML = answer.author ? '- Karl Marx' : '- Adolf Hitler';
-            attribution.innerHTML = answer.attribution;
+            attribution.innerHTML = (answer.author ? '- Karl Marx, ' : '- Adolf Hitler, ') + '<span class="result-loc">' + answer.attribution + '</span>';
             if(answer.author === answer.answer){
                 show(right);
                 hide(wrong);
@@ -174,8 +175,13 @@
         hide(resultsPage);
         resultsList.innerHTML = '';
         answers = [];
+        answered = false;
         currentQuoteIndex = 0;
         startQuiz();
+    }
+
+    function updateCounter(){
+        quizQuoteCounter.innerHTML = (currentQuoteIndex + 1) + '/' + quotes.length;
     }
 
     quizStartButton.onclick = startQuiz;
@@ -192,6 +198,12 @@
     function show(){
         for(var i = 0; i < arguments.length; i++){
             arguments[i].style = "display: flex";
+        }
+    }
+
+    function showInline(){
+        for(var i = 0; i < arguments.length; i++){
+            arguments[i].style = "display: inline";
         }
     }
 }());

@@ -1,0 +1,75 @@
+/* Tablet */
+@media (max-width: 1200px){
+    #landing-page h1{
+        font-size: 48px;
+    }
+
+    #landing-page h3{
+        font-size: 24px;
+    }
+
+    #landing-page p{
+        font-size: 16px;
+    }
+
+    #landing-page ul{
+        font-size: 14px;
+    }
+    .btn{
+        height: 36px;
+        width: 100px;
+        font-size: 16px;
+        padding: 0;
+    }
+
+    .material-icons{
+        font-size: 36px;
+    }
+
+    #quiz-images{
+        height: 300px;
+    }
+
+    #quiz-hitler-image, #quiz-marx-image{
+        height: 225px;
+        width: 180px;
+    }
+
+    /* #quiz-quote{
+        min-height: 150px;
+    } */
+
+    #quiz-quote-actual{
+        max-width: 800px;
+        font-size: 16px;
+    }
+
+    #quiz-quote-attribution{
+        font-size: 14px;
+    }
+
+    #results-summary{
+        width: 100%;
+        padding: 10px;
+    }
+
+    #results-summary-total{
+        font-size: 30px;
+    }
+
+    #results-summary-description{
+        font-size: 24px;
+    }
+
+    .result-container{
+        min-height: 150px;
+    }
+
+    .result-quote{
+        font-size: 14px;
+    }
+
+    .result-attribution{
+        font-size: 13px;
+    }
+}
