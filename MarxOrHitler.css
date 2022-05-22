@@ -1,13 +1,10 @@
-html{
-    font-family: 'Roboto', sans-serif;
-}
-
 .btn{
     height: 40px;
     width: 150px;
 }
 
 body{
+    font-family: 'Roboto', sans-serif !important;
     background-color: #222222;
     color: #DDDDDD;
     padding-left: 15px;
