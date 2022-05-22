@@ -1,0 +1,322 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+button{
+    height: 40px;
+    width: 150px;
+}
+
+body{
+    background-color: #222222;
+    color: #DDDDDD;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#app-container{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+}
+
+#landing-page h1{
+    font-size: 60px;
+}
+
+#landing-page h3{
+    font-size: 30px;
+}
+
+#landing-page p{
+    font-size: 24px;
+}
+
+#landing-page, #quiz-page, #results-page{
+    height: 100%;
+    width: 100%;
+}
+
+#landing-page{
+    display: flex;
+    flex-direction: column;
+}
+
+#quiz-page, #results-page{
+    display: none;
+}
+
+#quiz-quote-author, #quiz-quote-attribution, #quiz-quote-right, #quiz-quote-wrong{
+    display: none;
+}
+
+.material-icons{
+    font-size: 48px;
+}
+
+/* Quiz page */
+
+#quiz-page{
+    flex-direction: column;
+    width: 100%;
+}
+
+#quiz-images{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+#quiz-left-image{
+    position: absolute;
+    left: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#quiz-right-image{
+    position: absolute;
+    right: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#quiz-hitler-image, #quiz-marx-image{
+    cursor: pointer;
+    height: 450px;
+    width: 360px;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+#quiz-hitler-image:hover, #quiz-marx-image:hover{
+    border-color: forestgreen
+}
+
+.left-move #quiz-marx-image:hover, .right-move #quiz-hitler-image:hover{
+    border-color: black;
+}
+
+#quiz-quote{
+    height: fit-content;
+    text-align: center;
+    min-height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quiz-quote-actual{
+    max-width: 1000px;
+    font-size: 22px;
+}
+
+#quiz-quote-author{ font-size: 20px; margin-right: 6px;}
+#quiz-quote-attribution{ font-style: italic; font-size: 20px;}
+#quiz-options{
+    display: flex;
+    justify-content: center;
+}
+
+#quiz-quote-right{
+    color: forestgreen;
+}
+
+#quiz-quote-wrong{
+    color: red;
+}
+
+/* Results page */
+
+#results-page{
+    flex-direction: column;
+}
+
+#results-summary{
+    width: calc(100% - 12px);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 3px;
+    margin: 6px;
+}
+
+#results-summary-total{
+    font-size: 48px;
+}
+
+#results-summary-description{
+    font-size: 36px;
+}
+
+#results-list{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#results-options{
+    padding: 6px;
+}
+
+.result-container{
+    width: 50%;
+    min-height: 200px;
+    padding: 6px;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 8px;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+
+.result.correct{
+    border-color: forestgreen;
+}
+
+.result.incorrect{
+    border-color: red;
+}
+
+.result-quote{
+    font-size: 18px;
+}
+
+.result-author{
+    font-size: 18px;
+    margin-right: 6px;
+    width: fit-content;
+}
+
+.result-attribution{
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.result-right{
+    color: forestgreen;
+}
+
+.result-wrong{
+    color: red;
+}
+
+/* Animations */
+
+.left-move{
+    animation-duration: 1.2s;
+    animation-name: left-move;
+    animation-fill-mode:forwards;
+}
+
+.left-hide, .right-hide{
+    animation-duration: 0.6s;
+    animation-name: fade;
+    animation-fill-mode:forwards;
+}
+
+.right-move{
+    animation-duration: 1.2s;
+    animation-name: right-move;
+    animation-fill-mode:forwards;
+}
+
+.left-reset{
+    animation-duration: 1.2s;
+    animation-name: left-reset;
+    animation-fill-mode:forwards;
+}
+.right-reset{
+    animation-duration: 1.2s;
+    animation-name: right-reset;
+    animation-fill-mode:forwards;
+}
+.left-unhide, .right-unhide{
+    animation-duration: 0.6s;
+    animation-name: unfade;
+    animation-fill-mode:forwards;
+}
+
+@keyframes left-move{
+    from {
+        width: 50%;
+        right: 50%;
+        z-index: 0;
+    }
+
+    to {
+        width: 100%;
+        right: 0;
+        z-index: 10;
+    }
+}
+
+@keyframes right-move{
+    from {
+        width: 50%;
+        left: 50%;
+        z-index: 0;
+    }
+
+    to {
+        width: 100%;
+        left: 0;
+        z-index: 10;
+    }
+}
+
+
+@keyframes fade{
+    from{opacity: 1; z-index: 0;}
+    to {opacity: 0; z-index: -10;}
+}
+
+@keyframes left-reset{
+    from{
+        width: 100%;
+        right: 0;
+        z-index: 0;
+    }
+    to{
+        width: 50%;
+        right: 50%;
+        z-index: 10;
+    }
+}
+
+@keyframes right-reset{
+    from{
+        width: 100%;
+        left: 0;
+        z-index: 0;
+    }
+    to{
+        width: 50%;
+        left: 50%;
+        z-index: 10;
+    }
+}
+
+@keyframes unfade{
+    from{opacity: 0; z-index: -10;}
+    to {opacity: 1; z-index: 0;}
+}
+
